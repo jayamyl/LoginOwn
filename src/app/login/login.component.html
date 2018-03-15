@@ -1,0 +1,9 @@
+<br/>
+<br/>
+<form [formGroup]="loginForm" novalidate>
+User Name :<input type="text" name="username" formControlName="username">
+<br/>
+Password :<input type="text" name="password" formControlName="password">
+
+<input type="button" value="Login"(click)="login($event)" >
+</form>
