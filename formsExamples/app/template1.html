@@ -1,0 +1,45 @@
+<div class="container">
+<h2>Temlate Driven - User data</h2>
+<form #userForm="ngForm" (ngSubmit)="onSubmit(userForm.value)" novalidate>
+	<div class="form-group">
+	<label> Name </label>
+		<input type="text" #nameRef="ngModel" required class="form-control" name="name" [(ngModel)]="myName"> {{myName}}
+		<div [hidden]="nameRef.valid || nameRef.pristine" class="alert alert-danger"> Please enter Name
+		</div>
+	</div>	
+	<div class="form-group">
+	<label> Email </label>
+		<input type="text" #emailRef="ngModel" minlength="4" required class="form-control" name="email" ngModel>
+		
+		<div *ngIf="emailRef.errors && (emailRef.touched || emailRef.dirty)" class="alert alert-danger">  
+			<div [hidden]="!emailRef.errors.required" >
+				Please Enter an Email
+			</div>
+			<div [hidden]="!emailRef.errors.minlength">
+			Please give atleast 4 letters
+			</div>
+		</div>
+	</div>	
+	<div ngModelGroup="address">
+		<div class="form-group">
+		<label> Street </label>
+			<input type="text" class="form-control" name="street" ngModel>
+		</div>	
+		<div class="form-group">
+		<label> City </label>
+			<input type="text" class="form-control" name="city" ngModel>
+		</div>	
+		<div class="form-group">
+		<label> Postal Code </label>
+			<input type="text" #postal="ngModel" pattern="^[1-9][0-9]{4}$" class="form-control" name="postalcode" ngModel> 
+			<div *ngIf="postal.errors && (postal.touched || postal.dirty)" class="alert alert-danger">  
+			<div [hidden]="!postal.errors.pattern" >
+				Please Enter atleast 4 digit
+			</div>
+			 
+		</div>
+		</div>	
+	</div>
+	<button [disabled]="!userForm.form.valid" type="submit" class="btn btn-primary">Submit </button>
+</form>
+</div>
