@@ -1,0 +1,13 @@
+ul{
+    width:20%;
+}
+ul li{
+    list-style-type: none;
+    background-color: lightgray;
+    padding: 2px;
+    margin: 2px;
+}
+
+ul li:hover{
+    background-color:lightslategray;
+}
